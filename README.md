@@ -1,4 +1,4 @@
-# cinematic-library
+# message-generator
 
 ## Project setup
 ```
