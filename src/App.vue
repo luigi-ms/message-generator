@@ -1,8 +1,9 @@
 <template>
 	<div id="talkField">
 		<header>
-			<font-awesome-icon icon="AngleLeft" />
-			<h2>Grupo random</h2>
+			<i class="fa-regular fa-circle-left fa-xl"></i>
+			<h2>{{ title }}</h2>
+			<i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
 		</header>
   
 		<ul>
@@ -11,10 +12,19 @@
 	</div>
 	
 	<form>
-		<input v-model="user" placeholder="Nome do usuario" />
-		<input v-model="msg" placeholder="Mensagem"/>
-		
-		<button v-on:click.prevent="add">Adicionar mensagem</button>
+		<label for="username">Nome do autor da mensagem</label>
+		<input id="username" v-model="user" placeholder="Nome" />
+
+		<label for="message">Corpo da mensagem</label>
+		<input id="message" v-model="msg" placeholder="Mensagem"/>
+
+		<label for="groupTitle">Nome do grupo</label>
+		<input id="groupTitle" v-model="title" placeholder="Nome do grupo" />
+
+		<button v-on:click.prevent="add">
+			Adicionar
+			<i class="fa-solid fa-paper-plane"></i>
+		</button>
 	</form>
 </template>
 
@@ -26,9 +36,10 @@ export default {
 	components: { MessageComponent },
   data: () => {
 		return {
-			messages: [{ userName: "Luigi", text: "Salve", now: "13:47" }],
-			user: "",
-			msg: ""
+			messages: [],
+			user: "Fulano",
+			msg: "Ipsis Litteris",
+			title: "Grupo random"
 		}
 	},
 	methods: {
@@ -47,15 +58,18 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 #app {
   font-family: 'Montserrat', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: 300;
 	font-size: 0.9em;
 }
 
-#talkField {
+#talkField, button {
 	background-color: #041C32;;
 	color: #ECB365;
 }
@@ -63,14 +77,23 @@ export default {
 header {
 	background-color: #1a1b26; 
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	align-items: baseline;
 	padding: 2.5%;
+}
+
+h2 {
+	font-family: 'Montserrat', Arial, sans-serif;
+	font-weight: 600;
+	margin-right: 25%;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
 	margin-top: 2vh;
+	font-family: 'Open Sans', Arial, sans-serif;
+	letter-spacing: 1%;
 }
 
 input {
@@ -78,7 +101,15 @@ input {
 	margin-bottom: 1vh;
 }
 
-button { width: 25vw; }
+button { 
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 35vw;
+	height: 7vh;
+	border-radius: 10px;
+	border: none;
+}
 
 ul {
 	background-color: #041C32;

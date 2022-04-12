@@ -2,7 +2,10 @@
 	<li>
 		<h3>{{ msg.userName }}</h3>
 		<p id="text">{{ msg.text }}</p>
-		<p id="time">{{ msg.now }}</p>
+		<p id="time">
+			<i class="fa-solid fa-check"></i>
+			{{ msg.now }}
+		</p>
 	</li>
 </template>
 
